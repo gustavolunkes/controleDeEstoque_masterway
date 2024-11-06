@@ -44,16 +44,17 @@ h2 {
 .pallet-grid {
     display: grid;
     grid-template-columns: repeat(6, 100px);
-    gap: 15px;
+    gap: 25px;
     justify-content: center;
 }
 
 /* Estilos para cada pallet */
 .pallet {
+    padding: 20px 50px;
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: #3498db;
+    background-color: #234f6c;
     color: #fff;
     border: none;
     border-radius: 8px;
@@ -67,7 +68,7 @@ h2 {
 .pallet:hover {
     transform: translateY(-5px);
     box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.2);
-    background-color: #2980b9;
+    background-color: #3c779c;
 }
 
 /* Ajustes responsivos */
