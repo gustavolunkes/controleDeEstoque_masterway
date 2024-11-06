@@ -1,0 +1,92 @@
+/* Resetando alguns estilos */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Red Hat Text', Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f9;
+    color: #333;
+}
+
+/* Estilização do cabeçalho */
+h1 {
+    color: #2c3e50;
+    font-size: 2.5em;
+    margin-bottom: 10px;
+}
+
+h2 {
+    color: #34495e;
+    font-size: 1.8em;
+    margin-bottom: 30px;
+    font-style: italic;
+}
+
+/* Container principal */
+.container {
+    text-align: center;
+    margin-top: 20px;
+    padding: 20px;
+    border-radius: 8px;
+    background-color: #ffffff;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Grid de pallets */
+.pallet-grid {
+    display: grid;
+    grid-template-columns: repeat(6, 100px);
+    gap: 15px;
+    justify-content: center;
+}
+
+/* Estilos para cada pallet */
+.pallet {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #3498db;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    font-size: 1.2em;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.pallet:hover {
+    transform: translateY(-5px);
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.2);
+    background-color: #2980b9;
+}
+
+/* Ajustes responsivos */
+@media (max-width: 768px) {
+    .pallet-grid {
+        grid-template-columns: repeat(3, 100px);
+    }
+}
+
+@media (max-width: 480px) {
+    .pallet-grid {
+        grid-template-columns: repeat(2, 100px);
+    }
+
+    h1 {
+        font-size: 2em;
+    }
+
+    h2 {
+        font-size: 1.5em;
+    }
+}
