@@ -270,3 +270,68 @@ function loadItemsFromDatabase(palletName) {
         console.error("Erro ao carregar itens:", event.target.errorCode);
     };
 }
+
+
+// Função para adicionar item na tabela com botão de edição
+function addItemToTable(itemName, itemQuantity, itemId) {
+    const itemsList = document.getElementById("items-list");
+    const row = document.createElement("tr");
+    row.setAttribute("data-id", itemId);
+
+    row.innerHTML = `
+        <td>${itemName}</td>
+        <td>
+            <span>${itemQuantity}</span>
+            <button onclick="editQuantity(${itemId})" title="Editar quantidade">✏️</button>
+        </td>
+        <td><button onclick="removeItem(${itemId})">Remover</button></td>
+    `;
+    itemsList.appendChild(row);
+}
+
+function editQuantity(itemId) {
+    const row = document.querySelector(`tr[data-id="${itemId}"]`);
+    const quantityCell = row.querySelector("td:nth-child(2) span");
+    const currentQuantity = quantityCell.textContent;
+
+    const newQuantity = prompt("Nova quantidade:", currentQuantity);
+    if (newQuantity && !isNaN(newQuantity)) {
+        quantityCell.textContent = newQuantity;
+
+        // Atualizar no banco de dados (IndexedDB)
+        const transaction = db.transaction(["items"], "readwrite");
+        const objectStore = transaction.objectStore("items");
+
+        const getRequest = objectStore.get(itemId);
+        getRequest.onsuccess = (event) => {
+            const item = event.target.result;
+            item.itemQuantity = newQuantity; // Atualiza a quantidade
+            const updateRequest = objectStore.put(item);
+            updateRequest.onerror = (error) => {
+                console.error("Erro ao atualizar quantidade:", error);
+            };
+        };
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
